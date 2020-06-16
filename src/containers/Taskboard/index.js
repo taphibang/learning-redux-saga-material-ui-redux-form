@@ -4,6 +4,7 @@ import styles from './styles';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Grid from '@material-ui/core/Grid';
+import { STATUSES } from '../../constanst';
 
 class TaskBoard extends Component {
 
@@ -11,15 +12,15 @@ class TaskBoard extends Component {
         let xhtml = null;
         xhtml = (
             <Grid container spacing={3}>
-                <Grid item md={4} xs={12}>
-                    READY
-                </Grid>
-                <Grid item md={4} xs={12}>
-                    PROCESSING
-                </Grid>
-                <Grid item md={4} xs={12}>
-                    COMPLETE
-                </Grid>
+                {
+                    STATUSES.map((status, index) => {
+                        return (
+                            <Grid item md={4} xs={12} key={status.value}>
+                                {status.label}
+                            </Grid>
+                        );
+                    })
+                }
             </Grid>
         );
         return xhtml;
